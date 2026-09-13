@@ -1,0 +1,40 @@
+= Project plan
+
+== Milestone 0: reproducible project foundation
+
+* [x] Establish design and security boundaries.
+* [x] Add endpoint discovery and authenticated action prototype.
+* [x] Add deterministic source packages and ZipRunner metadata.
+* [ ] Create the `dorbian/playbook-surface` remote repository.
+
+== Milestone 1: device and toolchain acceptance
+
+* [ ] Record PlayBook model and installed OS.
+* [ ] Preserve recovery firmware and verify hashes locally.
+* [ ] Install the archived Tablet OS 2.1 Native SDK in an isolated environment.
+* [ ] Build and install a minimal unsigned native BAR.
+* [ ] Record the reboot/root/unsigned-app workflow.
+
+== Milestone 2: native control deck
+
+* [ ] Implement endpoint discovery and pairing on the PlayBook.
+* [ ] Render a responsive 5x3/6x4 button grid.
+* [ ] Send press, release and hold events.
+* [ ] Receive labels, icons and feedback state.
+* [ ] Bridge the endpoint agent to Bitfocus Companion Satellite API.
+
+== Milestone 3: remote display
+
+* [ ] Prove H.264/AAC MPEG-TS playback over RTP on hardware.
+* [ ] Implement Windows display and audio capture.
+* [ ] Return touch, scrolling, keyboard and pointer input.
+* [ ] Add virtual 1024x600 display support.
+* [ ] Measure latency, memory use and battery impact.
+
+== Milestone 4: additional endpoints and appliance behavior
+
+* [ ] Add SteamOS/Linux capture and input.
+* [ ] Add Android display-only endpoint support.
+* [ ] Add camera/microphone upstream modes.
+* [ ] Evaluate persistent startup on OS 2.0 versus tethered OS 2.1.
+

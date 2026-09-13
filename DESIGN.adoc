@@ -1,0 +1,82 @@
+= PlayBook Surface design
+:toc:
+
+== Product boundary
+
+The PlayBook is a thin native surface. It owns endpoint selection, video/audio
+presentation, local interaction rendering, touch/gesture capture and optional
+camera/microphone capture. It does not own modern service logins, web rendering,
+screen capture, general automation integrations or shell interpretation.
+
+Modern endpoints own display capture, hardware encoding, OS input injection,
+action configuration, Bitfocus Companion integration and status feedback.
+
+== Endpoint model
+
+Every endpoint has a stable random identifier, user-facing name, protocol
+version, advertised capabilities and control port. Discovery is advisory only:
+it cannot execute actions or establish trust. Saved endpoints remain usable when
+broadcast discovery is unavailable.
+
+The user explicitly selects the active display endpoint. Control-deck pages may
+contain buttons for several paired endpoints, but every button visibly belongs
+to a target.
+
+== Protocol layers
+
+`PBSURFACE_DISCOVER/1` is the local UDP discovery request. A bounded JSON reply
+describes an endpoint. The prototype control service uses authenticated HTTP;
+the device client will use a persistent framed control channel after hardware
+acceptance. Media uses H.264 video and AAC audio in MPEG-TS over RTP/RTSP when
+the PlayBook multimedia service confirms that path on hardware.
+
+Protocol evolution is additive within version 1. Unknown required fields or
+major versions fail closed.
+
+== Control deck
+
+Buttons carry presentation state and an opaque `action_id`. Actions are defined
+and approved on the endpoint. A client can invoke an identifier but cannot send
+an executable, command line, working directory or shell fragment.
+
+The built-in endpoint engine supports small local action sets. The Companion
+bridge is the preferred expansion mechanism. It translates Companion surface
+state into the stable PlayBook model and sends button press/release events back.
+
+== Security
+
+Pairing creates a high-entropy shared token. Discovery never returns that token.
+Control requests require authentication before state mutation. The prototype is
+restricted to trusted private networks; public exposure is unsupported. Remote
+access belongs behind a modern VPN terminated outside the PlayBook.
+
+Endpoint actions use argument arrays and `shell=False`. Configuration is local,
+ignored by Git, and excluded from source ZIPs. Logs must not include tokens.
+
+== Offline and legacy tooling
+
+Normal source builds never contact BlackBerry. The Tablet OS compiler, sysroot,
+BAR packager and deployer are locally archived inputs and live outside Git.
+Firmware/root/recovery operations are separate, manual device preparation.
+
+The repository may store manifests and checksums for locally supplied legacy
+inputs but must not redistribute proprietary archives without permission.
+
+== Update and rollback
+
+ZipRunner provides two source-management lanes:
+
+* full source ZIP overlays selected by `project.zr`, with protected local paths;
+* UTF-8 unified Git patches bound to an exact repository base and applied through
+  ZipRunner's validation and operator gates.
+
+Full ZIP and patch operations do not implicitly push, tag, release, flash a
+device, or install a BAR. Generated binaries and private device material remain
+outside source overlays.
+
+== Hardware truth
+
+Host tests and SDK compilation do not establish PlayBook compatibility. Device
+claims require recorded real-hardware acceptance. Until then, PlayBook modules
+must label their build and runtime status accurately.
+

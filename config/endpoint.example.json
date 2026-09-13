@@ -1,0 +1,30 @@
+{
+  "schema": "playbook-surface.endpoint/v1",
+  "endpoint": {
+    "id": "replace-with-a-stable-random-id",
+    "name": "Dorbian PC",
+    "control_port": 47880,
+    "capabilities": ["actions", "deck"]
+  },
+  "auth_token": "replace-with-a-long-random-token",
+  "actions": {
+    "open-notepad": {
+      "label": "Notepad",
+      "command": ["notepad.exe"]
+    }
+  },
+  "deck": {
+    "id": "home",
+    "title": "Dorbian PC",
+    "columns": 5,
+    "buttons": [
+      {
+        "position": 0,
+        "action_id": "open-notepad",
+        "label": "Notepad",
+        "color": "#243447"
+      }
+    ]
+  }
+}
+

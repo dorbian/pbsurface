@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!-- Hardware-gated packaging scaffold; values must be confirmed with Tablet OS 2.1 NDK. -->
+<qnx xmlns="http://www.qnx.com/schemas/application/1.0">
+  <id>com.dorbian.playbooksurface</id>
+  <name>PlayBook Surface</name>
+  <versionNumber>0.1.0</versionNumber>
+  <description>Remote display and control surface for BlackBerry PlayBook</description>
+  <author>Dorbian</author>
+  <asset path="arm/o.le-v7/playbook-surface" entry="true" type="Qnx/Elf">playbook-surface</asset>
+  <permission system="true">run_native</permission>
+  <permission>access_internet</permission>
+</qnx>
+

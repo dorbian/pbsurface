@@ -1,0 +1,98 @@
+{
+  "schema": "ziprunner.zr/v1",
+  "project_key": "playbook-surface",
+  "label": "PlayBook Surface",
+  "match": [
+    "playbook-surface-*.zip",
+    "blackberry-playbook-surface-*.zip"
+  ],
+  "command_subdir": ".",
+  "stop": [],
+  "stop_ports": [47880, 47881],
+  "build": [
+    "python -m unittest discover -s tests -v",
+    "python -m compileall host/src tools run_host.py"
+  ],
+  "start": [],
+  "build_window": "hidden",
+  "start_window": "managed",
+  "delete_missing": false,
+  "strip_single_root": true,
+  "runtime_kind": "tool",
+  "require_clean_git_before_overlay": true,
+  "mechanisms_require_build_success": true,
+  "protected_paths": [
+    ".git/**",
+    ".env",
+    ".env.*",
+    "local/**",
+    "private/**",
+    "firmware/**",
+    "toolchains/**",
+    "device-backups/**",
+    "logs/**",
+    "build/**",
+    "dist/**",
+    "__pycache__/**",
+    "*.pyc",
+    "*.bar",
+    "*.signed"
+  ],
+  "backup_dir": "C:/Users/dorbi/source/_ziprunner_backups/playbook-surface",
+  "git": {
+    "enabled": true,
+    "repo_dir": "C:/Users/dorbi/source/playbook-surface",
+    "remote": "origin",
+    "branch": "main",
+    "commit_message": "PlayBook Surface {version}",
+    "tag_template": "v{safe_version}",
+    "source_paths": ["."],
+    "exclude_paths": [
+      "local/**",
+      "private/**",
+      "firmware/**",
+      "toolchains/**",
+      "device-backups/**",
+      "logs/**",
+      "build/**",
+      "dist/**",
+      "*.bar",
+      "*.signed",
+      ".env",
+      ".env.*"
+    ],
+    "include_pull": true,
+    "include_push": true,
+    "include_tag": false,
+    "include_github_release": false,
+    "include_github_status": false,
+    "github_repo": "dorbian/playbook-surface",
+    "github_workflow": "host-ci.yml"
+  },
+  "handoff": {
+    "version": "0.1.0",
+    "notes": [
+      "Initial offline-first endpoint and protocol foundation.",
+      "Supports ZipRunner full source ZIP and exact-base patch workflows.",
+      "Does not include proprietary SDKs, firmware, signing data or device backups."
+    ],
+    "exclude_from_source_zip": [
+      ".git/**",
+      "local/**",
+      "private/**",
+      "firmware/**",
+      "toolchains/**",
+      "device-backups/**",
+      "logs/**",
+      "build/**",
+      "dist/**",
+      "*.bar",
+      "*.signed",
+      ".env",
+      ".env.*"
+    ]
+  },
+  "version": "0.1.0",
+  "description": "Native BlackBerry PlayBook remote display and configurable control surface with modern endpoint agents."
+}
+
