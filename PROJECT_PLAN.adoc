@@ -5,7 +5,7 @@
 * [x] Establish design and security boundaries.
 * [x] Add endpoint discovery and authenticated action prototype.
 * [x] Add deterministic source packages and ZipRunner metadata.
-* [ ] Create the `dorbian/playbook-surface` remote repository.
+* [x] Establish local Git plus ZipRunner ZIP/patch delivery as the authoritative workflow.
 
 == Milestone 1: device and toolchain acceptance
 

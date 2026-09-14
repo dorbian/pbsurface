@@ -1,6 +1,11 @@
 # ZipRunner management
 
 PlayBook Surface supports ZipRunner's two existing source-management lanes.
+Local source and artifacts are authoritative. No GitHub remote, hosted release,
+tag or push is required. Local Git history exists to give patches an exact base,
+clear review boundary and reversible commit history.
+
+Remote publication can be added later as a separately approved release mechanism.
 
 ## Full source ZIP
 
@@ -19,8 +24,9 @@ backup, build and explicit apply/release gates.
 
 Once the repository has an initial Git commit, add `playbook-surface` as a
 ZipRunner patch target through ZipRunner's **Add repository** workflow. Patch
-artifacts use ZipRunner's current UTF-8 unified-diff metadata contract and exact
-40-character base commit. Patch apply/commit/push remain separate gates.
+artifacts use ZipRunner's current UTF-8 unified-diff metadata contract and an
+exact 40-character base commit. Apply and local commit remain separate gates;
+remote push is disabled for this project.
 
 Do not manually edit ZipRunner's active configuration merely to onboard this
 repository. Use its project/import and patch-target UI so paths and Git state are

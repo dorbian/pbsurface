@@ -42,7 +42,7 @@
   "git": {
     "enabled": true,
     "repo_dir": "C:/Users/dorbi/source/playbook-surface",
-    "remote": "origin",
+    "remote": "",
     "branch": "main",
     "commit_message": "PlayBook Surface {version}",
     "tag_template": "v{safe_version}",
@@ -61,13 +61,13 @@
       ".env",
       ".env.*"
     ],
-    "include_pull": true,
-    "include_push": true,
+    "include_pull": false,
+    "include_push": false,
     "include_tag": false,
     "include_github_release": false,
     "include_github_status": false,
-    "github_repo": "dorbian/playbook-surface",
-    "github_workflow": "host-ci.yml"
+    "github_repo": "",
+    "github_workflow": ""
   },
   "handoff": {
     "version": "0.1.0",
